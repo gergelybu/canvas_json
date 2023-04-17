@@ -1,0 +1,19 @@
+{
+  "jobs": [
+    {
+      "job": "fighter",
+      "hp": 35,
+      "current_hp": 35,
+      "mp": 0,
+      "current_mp": 0,
+      "attack": 10,
+      "defense": 4,
+      "magic_attack": 1,
+      "magic_defense": 15,
+      "agility": 5,
+      "accuracy": 12,
+      "evasion": -2,
+      "crit": 10
+    }
+  ]
+}

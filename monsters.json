@@ -1,0 +1,19 @@
+{
+  "monsters": [
+    {
+      "monster": "goblin",
+      "hp": 18,
+      "current_hp": 18,
+      "mp": 0,
+      "current_mp": 0,
+      "attack": 4,
+      "defense": 4,
+      "magic_attack": 4,
+      "magic_defense": 4,
+      "agility": 3,
+      "accuracy": 2,
+      "evasion": 6,
+      "crit": 1
+    }
+  ]
+}
