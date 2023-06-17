@@ -28,6 +28,7 @@ $(function () {
 
   $("canvas").drawRect({
     layer: true,
+    name: "stats",
     fillStyle: "#0f03b4",
     strokeStyle: "#fff",
     strokeWidth: 4,
@@ -40,6 +41,7 @@ $(function () {
 
   $("canvas").drawRect({
     layer: true,
+    name: "commands",
     fillStyle: "#0f03b4",
     strokeStyle: "#fff",
     strokeWidth: 4,
@@ -88,6 +90,19 @@ $(function () {
       console.log("This feature is under construction!");
     },
   });
+
+  $("canvas").drawRect({
+    layer: true,
+    name: "message",
+    fillStyle: "#0f03b4",
+    strokeStyle: "#fff",
+    strokeWidth: 4,
+    cornerRadius: 10,
+    x: 200,
+    y: 25,
+    width: 400,
+    height: 50,
+  });
 });
 
 function processList(data) {
@@ -124,6 +139,7 @@ function attack() {
       let damage = 0;
       let critDmg = 0;
       //do {
+      $("canvas").removeLayer("battleText").drawLayers();
       toHit = Math.floor(Math.random() * 11) + fighterJobs[0].accuracy;
       toDmg = Math.floor(Math.random() * 11) + fighterJobs[0].attack;
       toCrit = Math.floor(Math.random() * 100) + fighterJobs[0].crit;
@@ -193,16 +209,47 @@ function attack() {
       if (toCrit > 99) {
         console.log(fighterJobs[0].job + " CRITICAL HIT!!!");
         console.log(fighterJobs[0].job + " dealt: " + critDmg);
+        $("canvas").drawText({
+          layer: true,
+          name: "battleText",
+          fillStyle: "#fff",
+          x: 200,
+          y: 25,
+          fontSize: 15,
+          fontFamily: "Verdana, sans-serif",
+          text: "Critical hit! Damage: " + critDmg,
+        });
+
         goblinData[0].current_hp -= critDmg;
         console.log(goblinData[0].current_hp);
       } else if (toHit >= toDodge) {
         console.log(fighterJobs[0].job + " hit with the attack!");
         console.log(fighterJobs[0].job + " dealt: " + damage);
+        $("canvas").drawText({
+          layer: true,
+          name: "battleText",
+          fillStyle: "#fff",
+          x: 200,
+          y: 25,
+          fontSize: 15,
+          fontFamily: "Verdana, sans-serif",
+          text: "Hit! Damage: " + damage,
+        });
         goblinData[0].current_hp -= damage;
         console.log(goblinData[0].current_hp);
       } else {
         console.log(fighterJobs[0].job + " missed the attack!");
         console.log(goblinData[0].current_hp);
+        $("canvas").drawText({
+          layer: true,
+          name: "battleText",
+          fillStyle: "#fff",
+          x: 200,
+          y: 25,
+          fontSize: 15,
+          fontFamily: "Verdana, sans-serif",
+          text: "Miss!",
+        });
       }
 
       toHit = Math.floor(Math.random() * 11) + goblinData[0].accuracy;
